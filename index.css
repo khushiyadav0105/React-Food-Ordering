@@ -1,9 +1,10 @@
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    height: 120px; /* Increased height to fit the large logo */
+    height: 120px; 
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -67,6 +68,11 @@
     cursor: pointer;
     border: 3px solid rgb(0,102,204);
 }
+
+.filter{
+
+    display: flex;
+}
 .filter-btn {
     margin: 10px;
     padding: 12px 20px;
@@ -83,6 +89,51 @@
     background-color:#bd3559; 
     transform: scale(1.05); 
 }
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-input {
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds space between input and button */
+}
+
+.search-box {
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.search-button {
+    background-color: #007bff; /* Blue background */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.search-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+
 .res-logo{
     width: 100%;
     height: auto;
@@ -122,4 +173,9 @@
     100% {
         left: 100%;
     }
+}
+.login{
+    cursor: pointer;
+    
+    padding: 0 20px;
 }

@@ -22,16 +22,22 @@ const Body = () => {
 
   }
 
+
+  //conditional rendering
   if(listOfRestaurants.length===0){
-    return <h1><Shimmer/></h1>
+    return <Shimmer/>
   }
 
-    return(
+    return listOfRestaurants.length===0 ? (<shimmer/>):( 
       <div className="body">
         <div className="filter">
-          <button className="filter-btn" onClick= {() => { const filteredList = listOfRestaurants.filter((res) =>
-          res.info.avgRating>4
-          );
+          <div className="search">
+            <input type="text" className="search-box" />
+            <button className="search-button">Search</button>
+          </div>
+          <button 
+          className="filter-btn" onClick= {() => { const filteredList = listOfRestaurants.filter((res) =>
+          res.info.avgRating>4);
           setlistOfRestaurants(filteredList);
           }
         }>Top Rated Restaurant</button>
