@@ -7,3 +7,5 @@ export const LOGO_URL=
 export const CART_URL=
 "https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/512x512/shopping_cart.png";
 
+export const MENU_API=
+"https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.6069264&lng=73.8750865&restaurantId="
