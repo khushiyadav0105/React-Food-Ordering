@@ -4,9 +4,25 @@
 
 there are 2 types of components in react
 # functional components 
-this si the new format of components.
+this is the new format of components.
+defined like this
+const user=()=>{
+    return(
+        this will return piece of jsx;
+    )
+}
 
 # class based components
+syntax
+class user eextends React.Component{
+    render(){
+        this render method is used to return some piece of jsx
+    }
+}
+---> this above is a class based component 
+---> the word extends is used to tell react that    user is a react component
+---> react.component is a class which is given to us by react so we have to import react from react;
+these are imported as same as functional components.
 
 
 
