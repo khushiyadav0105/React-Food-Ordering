@@ -2,7 +2,8 @@ import RestaurantCard from "./RestaurantCard";
 import {useEffect, useState} from 'react';
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
+import { SWIGGY_API } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
 
@@ -18,9 +19,7 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.6069264&lng=73.8750865&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
+      const response = await fetch( SWIGGY_API);
   
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -39,13 +38,19 @@ const Body = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
-  
-  //conditional rendering
-  // if(listOfRestaurants.length===0){
-  //   return <Shimmer/>
-  // }
 
+    
+
+  };
+
+  const onlineStatus=useOnlineStatus();
+  if(onlineStatus===false){
+    return (
+      <h1>You are offline!! please check your internet connection </h1>
+    )
+  }
+  
+  
     return listOfRestaurants.length===0 ? (<Shimmer/>):( 
       <div className="body">
         <div className="filter">

@@ -2,34 +2,18 @@ import {useState,useEffect} from 'react';
 import Shimmer from './Shimmer';
 import { MENU_API } from '../utils/constants';
 import { useParams } from 'react-router-dom';
+import useRestaurantMenu from '../utils/useRestaurantMenu';
 
 const RestaurantMenu = () => {
 
-    const [resInfo,setresInfo] = useState(null);
-
     const {resId} = useParams();
 
-    useEffect(()=>{
-        fetchMenu()
-    },[resId]);
-
-    console.log("Fetching from:", MENU_API + resId);
-
-
-    const fetchMenu = async ()=>
-    {
-        const data=await fetch (MENU_API + resId)
-        const json=await data.json();
-        setresInfo(json.data);
-    };
-
-    
+    const resInfo = useRestaurantMenu(resId);
+   
     if (!resInfo || !resInfo.cards || resInfo.cards.length < 3) {
         return <Shimmer/>;
     }
 
-
-    // // ✅ Extract safely inside the return statement
     const restaurantInfo = resInfo.cards[2]?.card?.card?.info;
     if (!restaurantInfo) {
         return <Shimmer />;
@@ -46,7 +30,7 @@ const RestaurantMenu = () => {
         <div className="Menu">
             <p>Hello</p>
             <h1>{name}</h1>
-            <p>{cuisines.join(", ")}-{costForTwoMessage}</p>
+            <p>{cuisines?.join(", ")}-{costForTwoMessage}</p>
             
             <ul>
                  {itemCards?.map((item) => (

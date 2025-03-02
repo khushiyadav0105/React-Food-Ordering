@@ -9,3 +9,5 @@ export const CART_URL=
 
 export const MENU_API=
 "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.6069264&lng=73.8750865&restaurantId="
+
+export const SWIGGY_API= "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.6069264&lng=73.8750865&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"

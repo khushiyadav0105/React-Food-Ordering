@@ -1,15 +1,28 @@
 //this is a function component
+import React from "react";
 import User from "./User";
 import UserClass from "./Userclass";
-const About=()=>{
-    return(
-        <div>
-            <h1>About</h1>
-            <h2>this is the about page</h2>
-            <User/>
-            <UserClass/>
-        </div>
-    );
-};
+
+
+class About extends React.Component{
+    constructor(props){
+        super(props);
+
+
+    }
+
+    componentDidMount(){
+
+    }
+    render(){
+        return(
+            <div>
+                <h1>this is about</h1>
+                <h2>khushi yadav</h2>
+                <UserClass/>
+            </div>
+        )
+    }
+}
 
 export default About;

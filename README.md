@@ -60,12 +60,17 @@ import {component} from "path";
 .. callback function and the dependency array 
 .. fist when we run the code the body is rendered and the callback     function is stored and as soon as body rendering ends our callback function is executed.
 .. this is used when we want our body to be rendered first and then make the api call
+
+
+
 .. useEffect(()=>{
     //here callback function is writtten
 },[this is the dependency array]);
 
 if no dependency array useEffect will be called everytime a comoponent rerenders.
+
 if [] this si the dependency array then useEffect is called only oj the initial render and not again and again when the page reloads
+
 if dependecy array is [btnnameReact] then useEffect will be called everytime btnnameReact will be updated.
 
 by default use effect is called at each render
@@ -97,3 +102,8 @@ there are two types of routing in web apps
 dynamic routing 
 
 
+
+lazy is a function given by react 
+const grocery = lazy(()=>import(//write the path of grocery)
+)
+yhis import is fucntion whickh will take the oath of the grocery component bexayse we want our grocery menu to load only when we click on it
