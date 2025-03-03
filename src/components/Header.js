@@ -13,31 +13,25 @@ const Header = () => {
 
 
     return (
-      <div className="header">
+      <div className="flex justify-between" >
         <div className="logo-container">
           <img
-            className="logo"
+            className="w-36"
             src={LOGO_URL}
           />
         </div>
-        <div className="nav-items">
-          <ul>
+        <div className="flex items-center">
+          <ul className="flex p-5 m-5">
           
-            <li>online status: {onlineStatus? "✅":"🔴"}</li>
-            <li><Link to="/">Home</Link></li>
-            <li>
+            <li className="px-2">online status: {onlineStatus? "✅":"🔴"}</li>
+            <li className="px-2"><Link to="/">Home</Link></li>
+            <li className="px-2">
               <Link to="/about">About Us</Link></li>
-            <li>
+            <li className="px-2">
               <Link to="/contact">Contact Us</Link>
               </li>
-            <li>
-              <img
-                className="cart-icon"
-                src={CART_URL}
-              ></img>
-
-            </li>
-            <li><Link to="/grocery">Grocery</Link></li>
+            <li className="px-2">Cart</li>
+            <li className="px-2"><Link to="/grocery">Grocery</Link></li>
             <button className="login" onClick={()=>{
               btnNameReact==="Login"?setbtnNameReact("Logout"):setbtnNameReact("Login");
               }}

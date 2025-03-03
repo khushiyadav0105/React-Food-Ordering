@@ -1,34 +1,39 @@
 import { CDN_URL } from "../utils/constants";
 
-const RestaurantCard = (props) => {
-    const {resData} = props;
-
-    const {
-      cloudinaryImageId,
-      name,
-      cuisines,
-      costForTwo,
-      avgRating,
-      sla,
-      slaString ,
-    } =resData?.info;
+const RestaurantCard = ({ resData }) => {
+  const {
+    cloudinaryImageId,
+    name,
+    cuisines,
+    costForTwo,
+    avgRating,
+    sla,
+  } = resData?.info;
 
   return (
-    <div className="res-card">
+    <div className="bg-white shadow-lg rounded-xl overflow-hidden w-64 flex flex-col h-full transition duration-300 hover:scale-105">
       <img
-        className="res-logo"
-        alt="res-logo"
+        className="w-full h-40 md:h-48 object-cover object-center"
+        alt={name}
         src={CDN_URL + cloudinaryImageId}
       />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating} star</h4>
-      
-      <h4>{costForTwo}</h4>
-      <h4>{sla?.slaString}</h4>
+      <div className="p-4 flex flex-col flex-grow">
+        <h3 className="text-lg font-semibold text-gray-900 leading-tight">{name}</h3>
+        <p className="text-sm text-gray-600 truncate">{cuisines.join(", ")}</p>
+        <div className="flex justify-between items-center mt-2">
+          <span
+            className={`px-2 py-1 rounded-md text-white text-xs font-semibold ${
+              avgRating >= 4 ? "bg-green-500" : "bg-yellow-500"
+            }`}
+          >
+            {avgRating} ⭐
+          </span>
+          <span className="text-sm text-gray-700">{costForTwo}</span>
+        </div>
+        <p className="text-xs text-gray-500 mt-1">{sla?.slaString}</p>
+      </div>
     </div>
   );
 };
-
 
 export default RestaurantCard;
