@@ -103,7 +103,19 @@ dynamic routing
 
 
 
-lazy is a function given by react 
+lazy is a function given by react
 const grocery = lazy(()=>import(//write the path of grocery)
 )
-yhis import is fucntion whickh will take the oath of the grocery component bexayse we want our grocery menu to load only when we click on it
+This import is fucntion whickh will take the oath of the grocery component bexayse we want our grocery menu to load only when we click on it
+
+
+controlled and uncontrolled components
+
+
+
+
+
+Higher Order Component 
+Takes a component and returns a component.
+
+

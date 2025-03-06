@@ -32,6 +32,7 @@ const Body = () => {
       console.error("Error fetching data:", error);
     }
   };
+  console.log(listOfRestaurants);
 
   const onlineStatus = useOnlineStatus();
   if (!onlineStatus) {
@@ -45,7 +46,8 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body bg-[#F5F5DC] min-h-screen p-4">
+    <div className="body .bg-[#F5F5DC]  →  bg-[#FAF3E0] 
+ min-h-screen p-4">
       <div className="filter flex flex-col md:flex-row justify-between items-center mb-4">
         <div className="search flex gap-2 w-full md:w-auto">
           <input
