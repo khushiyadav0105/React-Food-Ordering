@@ -32,7 +32,6 @@ const Body = () => {
       console.error("Error fetching data:", error);
     }
   };
-  console.log(listOfRestaurants);
 
   const onlineStatus = useOnlineStatus();
   if (!onlineStatus) {

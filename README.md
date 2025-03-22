@@ -114,8 +114,57 @@ controlled and uncontrolled components
 
 
 
+# Redux Toolkit
+    -Install @reduxjs/toolkit and react-redux
+    -Build our store
+    -Connect our store to an app
+    -create a cart slice
+    -dispatch action
+    -selector
+    
+
+
+
 
 Higher Order Component 
 Takes a component and returns a component.
+
+
+## testing for a developer 
+types
+- unit 
+- integration
+- end to end
+
+# setting up testing in our app
+- install React Testing Library
+- installed jest
+- installed babel dependencies
+- configure babel
+- configure parcel config file to disable default babel transpilation
+- jest configuration
+(parcel uses babel behind the scenes)
+there will be a conflict between the parcel's existing babel configuration so we need to change parcels behaviour to accomodate changes 
+- jest - npx jest --init
+- install jsdom library 
+- install @babel/preset-react - to make JSX work in test cases 
+- install @babel/preser-react inside my babel config
+- install  @testing-Library/jest-dom
+
+
+
+
+testing 
+it or test can be used 
+syntax= test("", ()=> {
+
+    render
+
+    Query
+
+    Assertion
+})
+
+describe is used to group tests 
 
 

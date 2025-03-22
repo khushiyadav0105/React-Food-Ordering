@@ -1,27 +1,30 @@
-//this is a function component
 import React from "react";
 import User from "./User";
 import UserClass from "./Userclass";
+import UserContext from "../utils/UserContext";
 
-
-class About extends React.Component{
-    constructor(props){
+class About extends React.Component {
+    constructor(props) {
         super(props);
-
-
     }
 
-    componentDidMount(){
-
+    componentDidMount() {
+        // You can add any necessary side effects here
     }
-    render(){
-        return(
+
+    render() {
+        return (
             <div>
-                <h1>this is about</h1>
-                <h2>khushi yadav</h2>
-                <UserClass/>
+                <div> Logged-in User: 
+                    <UserContext.Consumer>
+                        {({ loggedInUser }) => <span>{loggedInUser}</span>}
+                    </UserContext.Consumer>
+                </div>
+                <h1>This is About</h1>
+                <h2>Khushi Yadav</h2>
+                <UserClass />
             </div>
-        )
+        );
     }
 }
 

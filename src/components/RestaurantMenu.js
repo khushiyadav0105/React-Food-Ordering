@@ -10,11 +10,12 @@ const RestaurantMenu = () => {
     const {resId} = useParams();
 
     const resInfo = useRestaurantMenu(resId);
+
+    const [showIndex,setShowIndex]=useState(null)
    
     if (!resInfo || !resInfo.cards || resInfo.cards.length < 3) {
         return <Shimmer/>;
     }
-
     const restaurantInfo = resInfo.cards[2]?.card?.card?.info;
     if (!restaurantInfo) {
         return <Shimmer />;
@@ -45,8 +46,13 @@ const RestaurantMenu = () => {
             )) || []}
             </ul>
 
-            {categories.map((category)=>(
-                <RestaurantCategory data={category?.card?.card}/>
+            {categories.map((category,index)=>(
+                <RestaurantCategory 
+                key={category?.card?.card?.title} 
+                data={category?.card?.card}
+                showItems={index=== showIndex ? true:false}
+                setShowIndex={()=>setShowIndex(index)}
+                />
             ))}
 
         </div>
