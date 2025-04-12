@@ -4,28 +4,21 @@ import UserClass from "./UserClass";
 import UserContext from "../utils/UserContext";
 
 class About extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+  render() {
+    return (
+      <div className="max-w-3xl mx-auto px-4 py-8">
 
-    componentDidMount() {
-        // You can add any necessary side effects here
-    }
+        {/* About Section */}
+        <div className="bg-white shadow-md rounded-2xl p-6">
+          <h1 className="text-2xl font-bold mb-2 text-gray-900">About Us</h1>
+          <h2 className="text-lg font-medium text-gray-700 mb-4">Khushi Yadav</h2>
 
-    render() {
-        return (
-            <div>
-                <div> Logged-in User: 
-                    <UserContext.Consumer>
-                        {({ loggedInUser }) => <span>{loggedInUser}</span>}
-                    </UserContext.Consumer>
-                </div>
-                <h1>This is About</h1>
-                <h2>Khushi Yadav</h2>
-                <UserClass />
-            </div>
-        );
-    }
+          {/* User Details */}
+          <UserClass />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default About;

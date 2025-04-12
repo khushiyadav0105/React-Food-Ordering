@@ -1,67 +1,67 @@
-import { LOGO_URL } from "../utils/constants";
-import { CART_URL } from "../utils/constants";
-import { useState,useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import Logo from "../Assets/image.png";
+import { Home, Info, Phone, ShoppingCart, LogIn, LogOut, ShoppingBag } from "lucide-react";
 import UserContext from "../utils/UserContext";
-import { useSelector } from "react-redux"; 
- 
+import Logo from "../Assets/image.png";
+
 const Header = () => {
+  const [btnNameReact, setBtnNameReact] = useState("Login");
 
+  const onlineStatus = useOnlineStatus();
+  const { loggedInUser } = useContext(UserContext);
 
-  const [btnNameReact,setbtnNameReact]= useState("Login");
+  const cartItems = useSelector((store) => store.cart.items);
 
-  const onlineStatus=useOnlineStatus();
-
-  const {loggedInUser} = useContext(UserContext);
-  // console.log(data); 
-
-  //selector
-  const cartItems =useSelector((store)=>store.cart.items);
-    return (
-      <div className="flex justify-between items-center bg-[#FF8C00]  shadow-md py-2 px-6" >
-        <div className="logo-container">
-        <img className="w-20 md:w-28 rounded-full shadow-lg" src={Logo} alt="Logo"/>
-
-        </div>
-        <div className="flex items-center">
-          <ul className="flex space-x-6 text-black font-semibold">
-          
-            <li className="flex items-center">
-              <span className="text-gray-700">Online Status:</span> 
-            <span className="ml-2">{onlineStatus ? "✅" : "🔴"}</span>
-            </li>
-            <li className="hover:text-[#D32F2F] transition">
-              <Link to="/">Home</Link></li>
-            <li className="hover:text-[#D32F2F] transition">
-              <Link to="/about">About Us</Link></li>
-            <li className="hover:text-[#D32F2F] transition">
-              <Link to="/contact">Contact Us</Link>
-              </li>
-            
-            <li className="hover:text-[#D32F2F] transition"><Link to="/grocery">Grocery</Link></li>
-            <li className="relative">
-            <Link to="/cart">
-              🛒-{cartItems.length} items
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-1"></span>
-            </Link>
-          </li>
-            <button className="bg-[#5c6714] hover:bg-[#FFB300] text-black px-4 py-2 rounded-lg font-bold" onClick = { () => {
-              btnNameReact==="Login" ? setbtnNameReact("Logout") : setbtnNameReact ("Login");
-              }}
-
-              >{btnNameReact}
-                </button>
-
-                <li>
-                  {loggedInUser}
-                </li>
-            
-          </ul>
-        </div>
+  return (
+    // bg-[#fff7f0]
+    <div className="flex justify-between items-center bg-[#0e1c44] text-white py-4 px-10 shadow-lg shadow-gray-100/50 sticky top-0 z-50">
+      {/* Logo */}
+      <div className="ml-24">
+        <img className="w-20 md:w-24" src={Logo} alt="Logo" />
       </div>
-    );
-  };
+
+      {/* Navigation */}
+      <ul className="flex items-center space-x-8 font-semibold text-sm md:text-base">
+        <li className="flex items-center gap-1 hover:text-orange-700 hover:scale-105 transform transition-transform duration-200">
+          <Home className="h-5 w-5" />
+          <Link to="/">Home</Link>
+        </li>
+
+        <li className="flex items-center gap-1 hover:text-orange-700 hover:scale-105 transform transition-transform duration-200">
+          <Info className="h-5 w-5" />
+          <Link to="/about">About</Link>
+        </li>
+
+        <li className="flex items-center gap-1 hover:text-orange-700 hover:scale-105 transform transition-transform duration-200">
+          <Phone className="h-5 w-5" />
+          <Link to="/contact">Contact</Link>
+        </li>
+
+        <li className="flex items-center gap-1 hover:text-orange-700 hover:scale-105 transform transition-transform duration-200">
+          <ShoppingBag className="h-5 w-5" />
+          <Link to="/grocery">Grocery</Link>
+        </li>
+
+        <li className="flex items-center gap-1 hover:text-orange-700 hover:scale-105 transform transition-transform duration-200 relative">
+          <ShoppingCart className="h-5 w-5" />
+          <Link to="/cart">Cart ({cartItems.length})</Link>
+        </li>
+
+        {/* Login / Logout */}
+        <button
+          className="flex items-center gap-1 border border-[#001858] text-[#001858] bg-white px-4 py-1.5 rounded-full hover:text-lg transition-all duration-300"
+          onClick={() => {
+            setBtnNameReact(btnNameReact === "Login" ? "Logout" : "Login");
+          }}
+        >
+          {btnNameReact === "Login" ? <LogIn className="h-4 w-4" /> : <LogOut className="h-4 w-4" />}
+          {btnNameReact}
+        </button>
+      </ul>
+    </div>
+  );
+};
 
 export default Header;

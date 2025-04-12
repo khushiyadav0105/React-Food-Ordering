@@ -13,26 +13,41 @@ const ItemList=({items})=>{
     return(
         <div>
            
-          {items.map((item) => (<div key={item?.card?.info?.id} className="p-2 m-2 border-b-2 border-gray-200 text-left flex justify-between">
-            
-                <div className="w-9/12">
-                <div  className="py-2">
-                <span>{item?.card?.info?.name || "Unknown Item"}</span>
-                <span>-₹{item?.card?.info?.price? item.card.info.price/100 : item?.card?.info?.defaultPrice/100}</span>
+          {items.map((item) => (<div
+            key={item?.card?.info?.id}
+            className="p-4 mb-4 border-b border-gray-200 flex justify-between items-start"
+            >
+            {/* Text Info */}
+                <div className="w-9/12 pr-4">
+                    <div className="mb-1">
+                    <span className="text-base font-medium">{item?.card?.info?.name || "Unknown Item"}</span>
+                    <span className="ml-2 text-gray-700">
+                        ₹{item?.card?.info?.price ? item.card.info.price / 100 : item?.card?.info?.defaultPrice / 100}
+                    </span>
                     </div>
-                    <p className="text-xs">{item?.card?.info?.description}</p> 
-           
-            </div>
-            <div className="w-3/12 p-4">
-            <div className="absolute ">
-                <button className="p-2 mx-16px rounded-lg bg-white shadow-lg m-auto"
-                onClick={()=>handelAddItem(item)}>Add +</button>
-            </div>
-                <img src={CDN_URL+ item?.card?.info?.imageId} className="w-40"></img>
-            </div>
+                    <p className="text-sm text-gray-600">{item?.card?.info?.description}</p>
+                </div>
+
+                {/* Image + Button */}
+                <div className="w-3/12 relative flex flex-col items-center">
+                    {item?.card?.info?.imageId && (
+                    <img
+                        src={CDN_URL + item?.card?.info?.imageId}
+                        alt={item?.card?.info?.name}
+                        className="w-28 h-24 object-cover rounded-lg mb-2"
+                    />
+                    )}
+                    <button
+                    onClick={() => handelAddItem(item)}
+                    className="px-4 py-1 bg-white border border-gray-300 rounded shadow text-green-600 font-medium hover:bg-gray-50 transition"
+                    >
+                    Add +
+                    </button>
+                </div>
             </div>
 
-        ))}    
+
+            ))}    
         </div>
 
     )

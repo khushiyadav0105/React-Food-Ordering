@@ -32,7 +32,7 @@ class UserClass extends React.Component {
       <div className="user-card">
         <img src={avatar_url} alt="Profile" style={{ width: "100px", borderRadius: "50%" }} />
 
-        <h2>Hello from Class Component</h2>
+        <h2>Hello There Welcome to my page!!!😊 </h2>
         <h2>name:{name}</h2>
         <h2>location:{location}</h2>
       </div>
